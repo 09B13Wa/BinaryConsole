@@ -23,18 +23,6 @@
 #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
-#
-#     Licensed under the Apache License, Version 2.0 (the "License");
-#     you may not use this file except in compliance with the License.
-#     You may obtain a copy of the License at
-#
-#         http://www.apache.org/licenses/LICENSE-2.0
-#
-#     Unless required by applicable law or agreed to in writing, software
-#     distributed under the License is distributed on an "AS IS" BASIS,
-#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#     See the License for the specific language governing permissions and
-#     limitations under the License.
 
 from __future__ import annotations
 
@@ -244,10 +232,22 @@ class Byte:
 
     @property
     def first_bit(self) -> bool:
+        """
+        A boolean representing the least significant bit
+        (the eighth most significant bit) in the byte.
+        It represents the 2⁰ (1) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+        :return: True if the bit is 1. False if the bit is 0.
+        """
         return self.__first_bit
 
     @first_bit.setter
-    def first_bit(self, new_value: bool):
+    def first_bit(self, new_value: bool) -> None:
+        """
+
+        :param new_value:
+        :return:
+        """
         self.__first_bit = new_value
 
     @property
