@@ -41,7 +41,7 @@ from __future__ import annotations
 
 class Byte:
     """
-    An 8-bit unsigned integer. Uses little endian representation.
+    An 8-bit byte which represents an unsigned integer value. Uses little endian representation.
 
     Attributes\:
             __first_bit: a boolean representing the least significant bit
@@ -129,6 +129,7 @@ class Byte:
         :param seventh_bit: True if the value is 1 or False if the value is 0. The default value is 0. In decimal, this value is 64 (2⁶).
         :param eighth_bit: True if the value is 1 or False if the value is 0. The default value is 0. In decimal, this value is 128 (2⁷).
         """
+        # assign the bit values
         self.__first_bit = first_bit
         self.__second_bit = second_bit
         self.__third_bit = third_bit
@@ -138,7 +139,11 @@ class Byte:
         self.__seventh_bit = seventh_bit
         self.__eighth_bit = eighth_bit
 
+        # compute the unsigned integer represented by the byte
         self.__value = self.__compute_int()
+
+        # compute the extended ASCII character represented
+        # by the unsigned integer value represented by the byte.
         self.__char = chr(self.__value)
 
     def __compute_int(self) -> int:
