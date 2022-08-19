@@ -23,6 +23,18 @@
 #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
+#
+#     Licensed under the Apache License, Version 2.0 (the "License");
+#     you may not use this file except in compliance with the License.
+#     You may obtain a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#     Unless required by applicable law or agreed to in writing, software
+#     distributed under the License is distributed on an "AS IS" BASIS,
+#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#     See the License for the specific language governing permissions and
+#     limitations under the License.
 
 from __future__ import annotations
 
@@ -103,7 +115,7 @@ class Byte:
                  forth_bit: bool = False, fifth_bit: bool = False, sixth_bit: bool = False,
                  seventh_bit: bool = False, eighth_bit: bool = False) -> None:
         """
-        Create a new byte (8-bit unsigned integer) by assigning manually the value.
+        Create a new byte (8-bit unsigned integer) by assigning manually the bit values.
         The values are represented using little endian which means the first bytes
         are the least significant. For each bit, represented by a boolean, True stands for 1
         and 0 for False. False is the default value for unspecified bits.
