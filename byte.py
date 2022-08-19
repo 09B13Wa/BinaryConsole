@@ -23,6 +23,18 @@
 #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
+#
+#     Licensed under the Apache License, Version 2.0 (the "License");
+#     you may not use this file except in compliance with the License.
+#     You may obtain a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#     Unless required by applicable law or agreed to in writing, software
+#     distributed under the License is distributed on an "AS IS" BASIS,
+#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#     See the License for the specific language governing permissions and
+#     limitations under the License.
 
 from __future__ import annotations
 
@@ -237,6 +249,7 @@ class Byte:
         (the eighth most significant bit) in the byte.
         It represents the 2⁰ (1) value of the byte.
         True if the bit is 1. False if the bit is 0.
+
         :return: True if the bit is 1. False if the bit is 0.
         """
         return self.__first_bit
@@ -244,194 +257,549 @@ class Byte:
     @first_bit.setter
     def first_bit(self, new_value: bool) -> None:
         """
+        A boolean representing the least significant bit
+        (the eighth most significant bit) in the byte.
+        It represents the 2⁰ (1) value of the byte.
+        True if the bit is 1. False if the bit is 0.
 
-        :param new_value:
-        :return:
+        :param new_value: The new value to assign to the bit. True if the new value is 1. False if the new value is 0.
         """
         self.__first_bit = new_value
 
     @property
     def first_bit_int(self) -> int:
+        """
+        An integer representing the least significant bit
+        (the eighth most significant bit) in the byte.
+        It represents the 2⁰ (1) value of the byte.
+
+        :return: 1 if the bit is 1. 0 is the bit is 0.
+        """
         return Byte.__convert_bool_to_int(self.__first_bit)
 
     @first_bit_int.setter
-    def first_bit_int(self, new_value: int):
+    def first_bit_int(self, new_value: int) -> None:
+        """
+        An integer representing the least significant bit
+        (the eighth most significant bit) in the byte.
+        It represents the 2⁰ (1) value of the byte.
+
+        :param new_value: The new value to assign to the bit. 0 if the new value is 0. Any other value will end in a new value of 0 for the bit.
+        """
         self.__first_bit = Byte.__transform_int_to_bool(new_value)
 
     @property
     def first_bit_str(self) -> str:
+        """
+        A character wrapped in a one length string
+        representing the least significant bit
+        (the eighth most significant bit) in the byte.
+        It represents the 2⁰ (1) value of the byte.
+
+        :return: "1" if the bit is 1. "0" if the bit is 0.
+        """
         return Byte.__convert_bool_to_str(self.__first_bit)
 
     @first_bit_str.setter
-    def first_bit_str(self, new_value: str):
+    def first_bit_str(self, new_value: str) -> None:
+        """
+        A character wrapped in a one length string
+        representing the least significant bit
+        (the eighth most significant bit) in the byte.
+        It represents the 2⁰ (1) value of the byte.
+
+        :param new_value: The new value to assign to the bit. "0" if the new value is 0. Any other string will end in a new value of 1.
+        """
         self.__first_bit = Byte.__transform_str_to_bool(new_value)
 
     @property
     def second_bit(self) -> bool:
+        """
+        A boolean representing the second least significant bit
+        (the seventh most significant bit) in the byte.
+        It represents the 2¹ (2) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :return: True if the bit is 1. False if the bit is 0.
+        """
         return self.__second_bit
 
     @second_bit.setter
-    def second_bit(self, new_value: bool):
+    def second_bit(self, new_value: bool) -> None:
+        """
+        A boolean representing the second least significant bit
+        (the seventh most significant bit) in the byte.
+        It represents the 2¹ (2) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :param new_value: The new value to assign to the bit. True if the new value is 1. False if the new value is 0.
+        """
         self.__second_bit = new_value
 
     @property
     def second_bit_int(self) -> int:
+        """
+        An integer representing the second least significant bit
+        (the seventh most significant bit) in the byte.
+        It represents the 2¹ (2) value of the byte.
+
+        :return: 1 if the bit is 1. 0 is the bit is 0.
+        """
         return Byte.__convert_bool_to_int(self.__second_bit)
 
     @second_bit_int.setter
     def second_bit_int(self, new_value: int):
+        """
+        An integer representing the second least significant bit
+        (the seventh most significant bit) in the byte.
+        It represents the 2¹ (2) value of the byte.
+
+        :param new_value: The new value to assign to the bit. 0 if the new value is 0. Any other value will end in a new value of 0 for the byte.
+        """
         self.__second_bit = Byte.__transform_int_to_bool(new_value)
 
     @property
     def second_bit_str(self) -> str:
+        """
+        A character wrapped in a one length string
+        representing the second least significant bit
+        (the seventh most significant bit) in the byte.
+        It represents the 2¹ (2) value of the byte.
+
+        :return: "1" if the bit is 1. "0" if the bit is 0.
+        """
         return Byte.__convert_bool_to_str(self.__second_bit)
 
     @second_bit_str.setter
     def second_bit_str(self, new_value: str):
+        """
+        A character wrapped in a one length string
+        representing the second least significant bit
+        (the seventh most significant bit) in the byte.
+        It represents the 2¹ (2) value of the byte.
+
+        :param new_value: The new value to assign to the bit. "0" if the new value is 0. Any other string will end in a new value of 1.
+        """
         self.__second_bit = Byte.__transform_str_to_bool(new_value)
 
     @property
     def third_bit(self) -> bool:
+        """
+        A boolean representing the third least significant bit
+        (the sixth most significant bit) in the byte.
+        It represents the 2² (4) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :return: True if the bit is 1. False if the bit is 0.
+        """
         return self.__third_bit
 
     @third_bit.setter
-    def third_bit(self, new_value: bool):
+    def third_bit(self, new_value: bool) -> None:
+        """
+        A boolean representing the third least significant bit
+        (the sixth most significant bit) in the byte.
+        It represents the 2² (4) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :param new_value: The new value to assign to the bit. True if the new value is 1. False if the new value is 0.
+        """
         self.__third_bit = new_value
 
     @property
     def third_bit_int(self) -> int:
+        """
+        An integer representing the third least significant bit
+        (the sixth most significant bit) in the byte.
+        It represents the 2² (4) value of the byte.
+
+        :return: 1 if the bit is 1. 0 is the bit is 0.
+        """
         return Byte.__convert_bool_to_int(self.__third_bit)
 
     @third_bit_int.setter
     def third_bit_int(self, new_value: int):
+        """
+        An integer representing the third least significant bit
+        (the sixth most significant bit) in the byte.
+        It represents the 2² (4) value of the byte.
+
+        :param new_value: The new value to assign to the bit. 0 if the new value is 0. Any other value will end in a new value of 0 for the bit.
+        """
         self.__third_bit = Byte.__transform_int_to_bool(new_value)
 
     @property
     def third_bit_str(self) -> str:
+        """
+        A character wrapped in a one length string
+        representing the third least significant bit
+        (the sixth most significant bit) in the byte.
+        It represents the 2² (4) value of the byte.
+
+        :return: "1" if the bit is 1. "0" if the bit is 0.
+        """
         return Byte.__convert_bool_to_str(self.__third_bit)
 
     @third_bit_str.setter
     def third_bit_str(self, new_value: str):
+        """
+        A character wrapped in a one length string
+        representing the third least significant bit
+        (the sixth most significant bit) in the byte.
+        It represents the 2² (4) value of the byte.
+
+        :param new_value: The new value to assign to the bit. "0" if the new value is 0. Any other string will end in a new value of 1.
+        """
         self.__third_bit = Byte.__transform_str_to_bool(new_value)
 
     @property
     def forth_bit(self) -> bool:
+        """
+        A boolean representing the forth least significant bit
+        (the fifth most significant bit) in the byte.
+        It represents the 2³ (8) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :return: True if the bit is 1. False if the bit is 0.
+        """
         return Byte.__forth_bit
 
     @forth_bit.setter
-    def forth_bit(self, new_value: bool):
+    def forth_bit(self, new_value: bool) -> None:
+        """
+        A boolean representing the forth least significant bit
+        (the fifth most significant bit) in the byte.
+        It represents the 2³ (8) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :param new_value: The new value to assign to the bit. True if the new value is 1. False if the new value is 0.
+        """
         self.__forth_bit = new_value
 
     @property
     def forth_bit_int(self) -> int:
+        """
+        An integer representing the forth least significant bit
+        (the fifth most significant bit) in the byte.
+        It represents the 2³ (8) value of the byte.
+
+        :return: 1 if the bit is 1. 0 is the bit is 0.
+        """
         return Byte.__convert_bool_to_int(self.__forth_bit)
 
     @forth_bit_int.setter
     def forth_bit_int(self, new_value: int):
+        """
+        An integer representing the forth least significant bit
+        (the fifth most significant bit) in the byte.
+        It represents the 2³ (8) value of the byte.
+
+        :param new_value: The new value to assign to the bit. 0 if the new value is 0. Any other value will end in a new value of 0 for the bit.
+        """
         self.__forth_bit = Byte.__transform_int_to_bool(new_value)
 
     @property
     def forth_bit_str(self) -> str:
+        """
+        A character wrapped in a one length string
+        representing the forth least significant bit
+        (the fifth most significant bit) in the byte.
+        It represents the 2³ (8) value of the byte.
+
+        :return: "1" if the bit is 1. "0" if the bit is 0.
+        """
         return Byte.__convert_bool_to_str(self.__forth_bit)
 
     @forth_bit_str.setter
     def forth_bit_str(self, new_value: str):
+        """
+        A character wrapped in a one length string
+        representing the forth least significant bit
+        (the fifth most significant bit) in the byte.
+        It represents the 2³ (8) value of the byte.
+
+        :param new_value: The new value to assign to the bit. "0" if the new value is 0. Any other string will end in a new value of 1.
+        """
         self.__forth_bit = Byte.__transform_str_to_bool(new_value)
 
     @property
     def fifth_bit(self) -> bool:
+        """
+        A boolean representing the fifth least significant bit
+        (the forth most significant bit) in the byte.
+        It represents the 2⁴ (16) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :return: True if the bit is 1. False if the bit is 0.
+        """
         return Byte.__fifth_bit
 
     @fifth_bit.setter
-    def fifth_bit(self, new_value: bool):
+    def fifth_bit(self, new_value: bool) -> None:
+        """
+        A boolean representing the fifth least significant bit
+        (the forth most significant bit) in the byte.
+        It represents the 2⁴ (16) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :param new_value: The new value to assign to the bit. True if the new value is 1. False if the new value is 0.
+        """
         self.__fifth_bit = new_value
 
     @property
     def fifth_bit_int(self) -> int:
+        """
+        An integer representing the fifth least significant bit
+        (the forth most significant bit) in the byte.
+        It represents the 2⁴ (16) value of the byte.
+
+        :return: 1 if the bit is 1. 0 is the bit is 0.
+        """
         return Byte.__convert_bool_to_int(self.__fifth_bit)
 
     @fifth_bit_int.setter
     def fifth_bit_int(self, new_value: int):
+        """
+        An integer representing the fifth least significant bit
+        (the forth most significant bit) in the byte.
+        It represents the 2⁴ (16) value of the byte.
+
+        :param new_value: The new value to assign to the bit. 0 if the new value is 0. Any other value will end in a new value of 0 for the bit.
+        """
         self.__fifth_bit = Byte.__transform_int_to_bool(new_value)
 
     @property
     def fifth_bit_str(self) -> str:
+        """
+        A character wrapped in a one length string
+        representing the fifth least significant bit
+        (the forth most significant bit) in the byte.
+        It represents the 2⁴ (16) value of the byte.
+
+        :return: "1" if the bit is 1. "0" if the bit is 0.
+        """
         return Byte.__convert_bool_to_str(self.__fifth_bit)
 
     @fifth_bit_str.setter
     def fifth_bit_str(self, new_value: str):
+        """
+        A character wrapped in a one length string
+        representing the fifth least significant bit
+        (the forth most significant bit) in the byte.
+        It represents the 2⁴ (16) value of the byte.
+
+        :param new_value: The new value to assign to the bit. "0" if the new value is 0. Any other string will end in a new value of 1.
+        """
         self.__fifth_bit = Byte.__transform_str_to_bool(new_value)
 
     @property
     def sixth_bit(self) -> bool:
+        """
+        A boolean representing the sixth least significant bit
+        (the third most significant bit) in the byte.
+        It represents the 2⁵ (32) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :return: True if the bit is 1. False if the bit is 0.
+        """
         return Byte.__sixth_bit
 
     @sixth_bit.setter
-    def sixth_bit(self, new_value: bool):
+    def sixth_bit(self, new_value: bool) -> None:
+        """
+        A boolean representing the sixth least significant bit
+        (the third most significant bit) in the byte.
+        It represents the 2⁵ (32) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :param new_value: The new value to assign to the bit. True if the new value is 1. False if the new value is 0.
+        """
         self.__sixth_bit = new_value
 
     @property
     def sixth_bit_int(self) -> int:
+        """
+        An integer representing the sixth least significant bit
+        (the third most significant bit) in the byte.
+        It represents the 2⁵ (32) value of the byte.
+
+        :return: 1 if the bit is 1. 0 is the bit is 0.
+        """
         return Byte.__convert_bool_to_int(self.__sixth_bit)
 
     @sixth_bit_int.setter
     def sixth_bit_int(self, new_value: int):
+        """
+        An integer representing the sixth least significant bit
+        (the third most significant bit) in the byte.
+        It represents the 2⁵ (32) value of the byte.
+
+        :param new_value: The new value to assign to the bit. 0 if the new value is 0. Any other value will end in a new value of 0 for the bit.
+        """
         self.__sixth_bit = Byte.__transform_int_to_bool(new_value)
 
     @property
     def sixth_bit_str(self) -> str:
+        """
+        A character wrapped in a one length string
+        representing the sixth least significant bit
+        (the third most significant bit) in the byte.
+        It represents the 2⁵ (32) value of the byte.
+
+        :return: "1" if the bit is 1. "0" if the bit is 0.
+        """
         return Byte.__convert_bool_to_str(self.__sixth_bit)
 
     @sixth_bit_str.setter
     def sixth_bit_str(self, new_value: str):
+        """
+        A character wrapped in a one length string
+        representing the sixth least significant bit
+        (the third most significant bit) in the byte.
+        It represents the 2⁵ (32) value of the byte.
+
+        :param new_value: The new value to assign to the bit. "0" if the new value is 0. Any other string will end in a new value of 1.
+        """
         self.__sixth_bit = Byte.__transform_str_to_bool(new_value)
 
     @property
     def seventh_bit(self) -> bool:
+        """
+        A boolean representing the seventh least significant bit
+        (the second most significant bit) in the byte.
+        It represents the 2⁶ (64) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :return: True if the bit is 1. False if the bit is 0.
+        """
         return Byte.__seventh_bit
 
     @seventh_bit.setter
-    def seventh_bit(self, new_value: bool):
+    def seventh_bit(self, new_value: bool) -> None:
+        """
+        A boolean representing the seventh least significant bit
+        (the second most significant bit) in the byte.
+        It represents the 2⁶ (64) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :param new_value: The new value to assign to the bit. True if the new value is 1. False if the new value is 0.
+        """
         self.__seventh_bit = new_value
 
     @property
     def seventh_bit_int(self) -> int:
+        """
+        An integer representing the seventh least significant bit
+        (the second most significant bit) in the byte.
+        It represents the 2⁶ (64) value of the byte.
+
+        :return: 1 if the bit is 1. 0 is the bit is 0.
+        """
         return Byte.__convert_bool_to_int(self.__seventh_bit)
 
     @seventh_bit_int.setter
-    def seventh_bit_int(self, new_value: int):
+    def seventh_bit_int(self, new_value: int) -> None:
+        """
+        An integer representing the seventh least significant bit
+        (the second most significant bit) in the byte.
+        It represents the 2⁶ (64) value of the byte.
+
+        :param new_value: The new value to assign to the bit. 0 if the new value is 0. Any other value will end in a new value of 0 for the bit.
+        """
         self.__seventh_bit = Byte.__transform_int_to_bool(new_value)
 
     @property
     def seventh_bit_str(self) -> str:
+        """
+        A character wrapped in a one length string
+        representing the seventh least significant bit
+        (the second most significant bit) in the byte.
+        It represents the 2⁶ (64) value of the byte.
+
+        :return: "1" if the bit is 1. "0" if the bit is 0.
+        """
         return Byte.__convert_bool_to_str(self.__seventh_bit)
 
     @seventh_bit_str.setter
     def seventh_bit_str(self, new_value: str):
+        """
+        A character wrapped in a one length string
+        representing the seventh least significant bit
+        (the second most significant bit) in the byte.
+        It represents the 2⁶ (64) value of the byte.
+
+        :param new_value: The new value to assign to the bit. "0" if the new value is 0. Any other string will end in a new value of 1.
+        """
         self.__seventh_bit = Byte.__transform_str_to_bool(new_value)
 
     @property
     def eighth_bit(self) -> bool:
+        """
+        A boolean representing the eighth least significant bit
+        (the most significant bit) in the byte.
+        It represents the 2⁷ (128) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :return: True if the bit is 1. False if the bit is 0.
+        """
         return Byte.__eighth_bit
 
     @eighth_bit.setter
-    def eighth_bit(self, new_value: bool):
+    def eighth_bit(self, new_value: bool) -> None:
+        """
+        A boolean representing the eighth least significant bit
+        (the most significant bit) in the byte.
+        It represents the 2⁷ (128) value of the byte.
+        True if the bit is 1. False if the bit is 0.
+
+        :param new_value: The new value to assign to the bit. True if the new value is 1. False if the new value is 0.
+        """
         self.__eighth_bit = new_value
 
     @property
     def eighth_bit_int(self) -> int:
+        """
+        An integer representing the eighth least significant bit
+        (the most significant bit) in the byte.
+        It represents the 2⁷ (128) value of the byte.
+
+        :return: 1 if the bit is 1. 0 is the bit is 0.
+        """
         return Byte.__convert_bool_to_int(self.__eighth_bit)
 
     @eighth_bit_int.setter
     def eighth_bit_int(self, new_value: int):
+        """
+        An integer representing the eighth least significant bit
+        (the most significant bit) in the byte.
+        It represents the 2⁷ (128) value of the byte.
+
+        :param new_value: The new value to assign to the bit. 0 if the new value is 0. Any other value will end in a new value of 0 for the bit.
+        """
         self.__eighth_bit = Byte.__transform_int_to_bool(new_value)
 
     @property
     def eighth_bit_str(self) -> str:
+        """
+        A character wrapped in a one length string
+        representing the eighth least significant bit
+        (the most significant bit) in the byte.
+        It represents the 2⁷ (128) value of the byte.
+
+        :return: "1" if the bit is 1. "0" if the bit is 0.
+        """
         return Byte.__convert_bool_to_str(self.__eighth_bit)
 
     @eighth_bit_str.setter
     def eighth_bit_str(self, new_value: str):
+        """
+        A character wrapped in a one length string
+        representing the eighth least significant bit
+        (the most significant bit) in the byte.
+        It represents the 2⁷ (128) value of the byte.
+
+        :param new_value: The new value to assign to the bit. "0" if the new value is 0. Any other string will end in a new value of 1.
+        """
         self.__eighth_bit = Byte.__transform_str_to_bool(new_value)
 
     @staticmethod
