@@ -35,6 +35,18 @@
 #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
+#
+#     Licensed under the Apache License, Version 2.0 (the "License");
+#     you may not use this file except in compliance with the License.
+#     You may obtain a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#     Unless required by applicable law or agreed to in writing, software
+#     distributed under the License is distributed on an "AS IS" BASIS,
+#     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#     See the License for the specific language governing permissions and
+#     limitations under the License.
 
 from __future__ import annotations
 
@@ -151,6 +163,10 @@ class Byte:
         Computes the unsigned integer the byte represents in decimal.
         :return: The int object which represents the decimal unsigned integer represented by the byte.
         """
+
+        # compute the integral value by adding in succession the powers of 2. This works because
+        # True in python has a value of 1 and will therefore successfully add its value to the count whereas
+        # False has a value of 0 and will therefore not add anything to the total
         total: int = 0
         total += self.__first_bit * 1
         total += self.__second_bit * 2
@@ -165,6 +181,16 @@ class Byte:
 
     @staticmethod
     def from_int(number: int) -> Byte:
+        """
+        Generate a Byte object from an unsigned integer value.
+        If the value is negative, then the value will have 1 added to its absolute value and will be positive.
+        If the value's binary representation,
+        only the value represented in the 8 least significant bits will be considered.
+        :param number: the unsigned integer value.
+        :return: the corresponding Byte object.
+        """
+
+        # Extract the bits by performing shifts and then testing whether that bit is 1 or 0
         first_bit: int = number & 1
         second_bit = (number >> 1) & 1
         third_bit: int = (number >> 2) & 1
@@ -174,6 +200,7 @@ class Byte:
         seventh_bit: int = (number >> 6) & 1
         eighth_bit: int = (number >> 7) & 1
 
+        # If the extracted bit is 1, then the associated boolean should be True. Otherwise, it should be False.
         first_bit_bool: bool = first_bit == 1
         second_bit_bool: bool = second_bit == 1
         third_bit_bool: bool = third_bit == 1
@@ -187,8 +214,24 @@ class Byte:
                     fifth_bit_bool, sixth_bit_bool, seventh_bit_bool, eighth_bit_bool)
 
     @staticmethod
-    def from_str(string: str):
+    def from_str(string: str, search_offset: int = 0):
+        """
+        Generate a Byte object from a string representing of an unsigned binary number.
+        By default, all bits are considered 0. However, if the corresponding bit's position
+        (1 based counting (i.e., the first bit is the first character in the string))
+        in the string exists and is the character '1', then the bit will be considered 1.
+        Note that there is an argument search_offset which allows you to offset the search_point for the byte in the string.
+        So for instance, the corresponding character to the first bit is whatever the search_offset is set to.
+        By default, however, the offset is 0 so the byte will be read as the potential first 8 characters in the string.
+        :param string: the string to parse.
+        :param search_offset: offsets the search region in the string for the byte.
+        :return: the parsed Byte object
+        """
+
+        # compute the string's length to avoid having to traverse multiple times for its length
         str_len: int = len(string)
+
+        # set the default values of the bits, all to False which represents 0
         first_bit: bool = False
         second_bit: bool = False
         third_bit: bool = False
@@ -198,38 +241,71 @@ class Byte:
         seventh_bit: bool = False
         eighth_bit: bool = False
 
-        if str_len > 0:
-            first_bit = string[0] == "1"
-        if str_len > 1:
-            second_bit = string[1] == "1"
-        if str_len > 2:
-            third_bit = string[2] == "1"
-        if str_len > 3:
-            forth_bit = string[3] == "1"
-        if str_len > 4:
-            fifth_bit = string[4] == "1"
-        if str_len > 5:
-            sixth_bit = string[5] == "1"
-        if str_len > 6:
-            seventh_bit = string[6] == "1"
-        if str_len > 7:
-            eighth_bit = string[7] == "1"
+        # compute the expected locations of the bits in the string (to avoid having to compute them twice)
+        # taking into account the search_offset
+        second_bit_location: int = 1 + search_offset
+        third_bit_location: int = 2 + search_offset
+        forth_bit_location: int = 3 + search_offset
+        fifth_bit_location: int = 4 + search_offset
+        sixth_bit_location: int = 5 + search_offset
+        seventh_bit_location: int = 6 + search_offset
+        eighth_bit_location: int = 7 + search_offset
+
+        # for each byte, if the position in the string exists, check whether the character is '1' for 1
+        # all other characters are considered as 0
+        if str_len > search_offset:
+            first_bit = string[search_offset] == "1"
+        if str_len > second_bit_location:
+            second_bit = string[second_bit_location] == "1"
+        if str_len > third_bit_location:
+            third_bit = string[third_bit_location] == "1"
+        if str_len > forth_bit_location:
+            forth_bit = string[forth_bit_location] == "1"
+        if str_len > fifth_bit_location:
+            fifth_bit = string[fifth_bit_location] == "1"
+        if str_len > sixth_bit_location:
+            sixth_bit = string[sixth_bit_location] == "1"
+        if str_len > seventh_bit_location:
+            seventh_bit = string[seventh_bit_location] == "1"
+        if str_len > eighth_bit_location:
+            eighth_bit = string[eighth_bit_location] == "1"
 
         return Byte(first_bit, second_bit, third_bit, forth_bit,
                     fifth_bit, sixth_bit, seventh_bit, eighth_bit)
 
     @staticmethod
     def from_char(char: str) -> Byte:
+        """
+        Generate a byte object from the unicode code point of a character wrapped in a one length string.
+        If the code point's value's binary representation is longer than 8 bits, only the 8 least significant bits
+        will be considered for the value.
+        :param char: the one length string containing the character
+        :return: the byte object with the corresponding unicode point as value.
+        """
+        # convert the character into its integer value than use the from_int() method to transform it into a Byte object
+        # from the integer value.
         char_ord: int = ord(char)
         return Byte.from_int(char_ord)
 
     @staticmethod
     def from_byte(byte: Byte) -> Byte:
+        """
+        Generate a separate and unique byte object from another byte object with the same bit values.
+        This acts as a cloning method.
+        :param byte: the byte to copy the bit values from
+        :return: the cloned byte object
+        """
         return Byte(byte.__first_bit, byte.__second_bit, byte.__third_bit, byte.__forth_bit,
                     byte.__fifth_bit, byte.__sixth_bit, byte.__seventh_bit, byte.__eighth_bit)
 
     @staticmethod
     def __transform_int_to_bool(number: int) -> bool:
+        """
+        helper function that returns the binary correspondant to the integer for the Byte object.
+        the integer 0 returns False. Any other integer returns True.
+        :param number: the integer
+        :return: False if the integer is 0. True otherwise.
+        """
         if number == 0:
             return False
         else:
@@ -237,6 +313,12 @@ class Byte:
 
     @staticmethod
     def __transform_str_to_bool(number: str) -> bool:
+        """
+        helper function that returns the binary correspondant to the integer for the Byte object.
+        the integer 0 returns False. Any other integer returns True.
+        :param number: the integer
+        :return: False if the integer is 0. True otherwise.
+        """
         if number == "0":
             return False
         else:
